@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin dash board</title>
+    <style>
+      body {
+          margin: 0;
+          padding: 0;
+          background-image: url('https://sfscollege.in/images/pc4.jpg'); /* Replace 'your-background-image.jpg' with the path to your image */
+          background-size: cover;
+          background-position: center;
+          height: 100vh;
+          position: relative;
+      }
+      .button-container {
+          position: absolute;
+          top: 20px; /* Adjust the top margin */
+          right: 20px; /* Adjust the right margin */
+          text-align: right;
+      }
+      .button {
+          padding: 10px 20px;
+          background-color:#007bff; /* You can change the color */
+          color: #070707;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          text-decoration: none; /* Remove underline */
+          display: inline-block;
+          margin-left: 10px; /* Adjust the space between the buttons */
+      }
+      .button:hover {
+          background-color: #0056b3; /* Change the hover color */
+      }
+  </style>
+</head>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  {% for message in messages %}
+    <center><b>{{ message }}</b></center>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+<body>
+  <div class="button-container">
+      <a href="{{url_for('alogout')}}" class="button">Logout</a> 
+      <a href="{{url_for('adddepartment')}}" class="button">Add Department</a>
+      <a href="{{url_for('viewdepartments')}}" class="button">View / Update / Delete Departments</a>
+      <a href="{{url_for('addcompany')}}" class="button">Add Company</a>
+      <a href="{{url_for('viewcompany_a')}}" class="button">View Company</a>
+      <a href="{{url_for('view_applied_companies')}}" class="button">View Applied Companies</a>
+  </div>
+</body>
+</html>

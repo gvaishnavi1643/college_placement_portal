@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://blog.stucred.com/wp-content/uploads/2019/08/placement-consultants.jpg'); /* Replace 'your-background-image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff; /* You can change the color */
+            color: #100e0e;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+            display: inline-block;
+            margin:0 10px;
+        }
+        .button:hover {
+            background-color: #0056b3; /* Change the hover color */
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+  <div class="button-container">
+      <a href="{{url_for('ulogout')}}" class="button">Logout</a>
+      <a href="{{url_for('viewcompany')}}" class="button">Apply for Companies</a>
+  </div>
+</body>
+</html>

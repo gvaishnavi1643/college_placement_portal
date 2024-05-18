@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement Results</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/pieces-blue-stationery_23-2148169528.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adding transparency */
+            border-radius: 10px;
+            margin-top: 50px; /* Adjust as needed */
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <a href="{{url_for('coordinator_dashboard')}}">BACK</a>
+
+    <h1>Placement Results view by department coordinator</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Company ID</th>
+                <th>Company Name</th>
+                <th>Job Role</th>
+                <th>Package</th>
+                <th>Application Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in placement_data %}
+            <tr>
+                <td>{{ data[0] }}</td>  <!-- Student ID -->
+                <td>{{ data[1] }}</td>  <!-- Student Name -->
+                <td>{{ data[2] }}</td>  <!-- Email -->
+                <td>{{ data[3] }}</td>  <!-- Department -->
+                <td>{{ data[4] }}</td>  <!-- Company ID -->
+                <td>{{ data[5] }}</td>  <!-- Company Name -->
+                <td>{{ data[6] }}</td>  <!-- Job Role -->
+                <td>{{ data[7] }}</td>  <!-- Package -->
+                <td>{{ data[8] }}</td>  <!-- Application Status -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

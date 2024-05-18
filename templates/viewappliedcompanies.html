@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Applied Companies</title>
+    <style>
+        html {
+            background-image: url('https://domshat.com/wp-content/uploads/2021/05/small-business-tips.jpg'); /* Replace 'background.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f400;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        select, button {
+            padding: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        
+        select:focus, button:focus {
+            outline: none;
+        }
+        
+        button {
+            background-color: #45a049;
+        }
+        
+        button:hover {
+            background-color: #3e8e41;
+        }
+        a {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        a:hover {
+            background-color: #0056b3
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="container">
+        <a href="{{url_for('admindashboard')}}">BACK</a>
+        <h1>Applied Companies</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Company ID</th>
+                    <th>Company Name</th>
+                    <th>Job Role</th>
+                    <th>Package</th>
+                    <th>Application result</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in applied_data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                    <td>{{ row[6] }}</td>
+                    <td>{{ row[7] }}</td>
+                    <td>{{ row[8] }}</td>
+                    <td>
+                        <form action="/update_application/{{ row[0] }}" method="POST">
+
+                            <select name="application_result">
+                                <option value="pending" {% if row[8] == 'pending' %} selected {% endif %}>Pending</option>
+                                <option value="accepted" {% if row[8] == 'accepted' %} selected {% endif %}>Accepted</option>
+                                <option value="rejected" {% if row[8] == 'rejected' %} selected {% endif %}>Rejected</option>
+                            </select>
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

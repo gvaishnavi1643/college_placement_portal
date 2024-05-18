@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Signin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.vanlandinghamlaw.com/assets/content/content-v2-alt-bg.2212141348435.jpg'); /* Replace 'background_image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.605); /* Adjust the opacity as needed */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .forgot-password,
+        .new-account {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-password a,
+        .new-account a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover,
+        .new-account a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="container">
+        <h1>User Signin</h1>
+        <form method="POST">
+            <label for="email" class="required"><i class="fas fa-envelope"></i> enter student id:</label>
+            <input type="text" id="email" placeholder="Enter username" name="username" required>
+
+            <label for="password" class="required"><i class="fas fa-lock"></i> Password:</label>
+            <input type="password" id="password" placeholder="Enter password" name="password" required>
+
+            <button type="submit">Submit</button>
+
+            <div class="forgot-password">
+                <a href="{{url_for('uforgot')}}">Forgot Password?</a>
+            </div>
+            <div class="new-account">
+                Don't have an account?<a href="{{url_for('uregistration')}}">Register</a>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

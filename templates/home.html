@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLLEGE PLACEMENT RESULT</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://joinsuperset.com/blogs/wp-content/uploads/2023/08/campus-placement-automation-software.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .top-options {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .top-options button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: blue;
+            border: none;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+        }
+
+        .top-options button:hover {
+            background-color: darkblue;
+        }
+
+        .title {
+           margin-top: 40px; /* Adjust as needed */
+           margin-bottom: 5px; /* Adjust as needed */
+           font-size: 60px;
+           color: rgb(8, 7, 7);
+        }
+
+        .message {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: rgb(10, 10, 10);
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="container">
+        <div class="top-options">
+            <button onclick=window.location.href='{{ url_for('uregistration') }}'>Student Registration</button>
+            <button onclick=window.location.href='{{ url_for('ulogin') }}'>Student Login</button>
+            <button onclick=window.location.href='{{ url_for('cregistration') }}'>Coordinator Registration</button>
+            <button onclick=window.location.href='{{ url_for('clogin') }}'>Coordinator Login</button>    
+        </div>
+        <h1 class="title">COLLEGE PLACEMENT RESULT</h1>
+        <p class="message">This page is about a technology that provides quick placement management system in college unlike the traditional system.</p>
+    </div>
+</body>
+</html>

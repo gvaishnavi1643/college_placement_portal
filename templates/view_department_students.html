@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view_department_students</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-concise-geometry-campus-recruitment-poster-board-background-psd-image_166725.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .student-box {
+            margin-bottom: 20px; /* Add some space between student boxes */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .container a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="container">
+        <a href="{{url_for('coordinator_dashboard')}}">BACK</a>
+        {% if d %}
+            {% for i in d %}
+                <div class="student-box">
+                    <p>student ID: {{ i[0] }}</p>
+                    <p>Name: {{ i[1] }}</p>
+                    <p>Email: {{ i[2] }}</p>
+                    <p>Phone : {{ i[3] }}</p>
+                    <p>Department: {{ i[4] }}</p>
+                    <p>Address: {{ i[5] }}</p>
+                    <p>Passout year: {{ i[6] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No students are there in this department</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Company</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://domshat.com/wp-content/uploads/2021/05/small-business-tips.jpg');
+            /* Your background image URL */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .data-container {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Add shadow effect */
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <a href="{{url_for('admindashboard')}}">BACK</a>
+    <div class="data-container">
+        <h1>Add Company</h1>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="company_name">Company Name:</label>
+                <input type="text" id="company_name" name="company_name" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="package">Package:</label>
+                <input type="number" id="package" name="package" step="0.01"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="requirements">Requirements:</label><br>
+                <textarea id="requirements" name="requirements" rows="4" cols="50"></textarea><br><br>
+            </div>
+            <div class="form-group">
+                <label for="departments">Departments:</label>
+                <input type="text" id="departments" name="departments"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="passout_year">Passout Year:</label>
+                <input type="text" id="passout_year" name="passout_year" placeholder="if passout year not required enter any passout year"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="job_location">Job Location:</label>
+                <input type="text" id="job_location" name="job_location"><br><br>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Company</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <center><b>{{ message }}</b></center>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <body>
+    <a href="{{url_for('admindashboard')}}">BACK</a>
+
+    {% for i in d %}
+      <h1>Update Company</h1>
+      <form action="#" method="POST">
+          <label for="company_name">Company Name:</label>
+          <input type="text" id="company_name" name="company_name" placeholder="{{i[1]}}" value="{{i[1]}}" required><br><br>
+  
+          <label for="description">Description:</label><br>
+          <textarea id="description" name="description" rows="4" cols="50" value="{{i[2]}}">{{i[2]}}</textarea><br><br>
+  
+          <label for="role">Role:</label>
+          <input type="text" id="role" name="role" value="{{i[3]}}" placeholder="{{i[3]}}"><br><br>
+  
+          <label for="package">Package:</label>
+          <input type="number" id="package" name="package" step="0.01" value="{{i[4]}}" placeholder="{{i[4]}}"><br><br>
+  
+          <label for="requirements">Requirements:</label><br>
+          <textarea id="requirements" name="requirements" rows="4" cols="50" value="{{i[5]}}">{{i[5]}}</textarea><br><br>
+  
+          <label for="departments">Departments:</label>
+          <input type="text" id="departments" name="departments" placeholder="{{i[6]}}" value="{{i[6]}}"><br><br>
+  
+          <label for="passout_year">Passout Year:</label>
+          <input type="text" id="passout_year" name="passout_year" placeholder="{{i[7]}}" value="{{i[7]}}"><br><br>
+  
+          <label for="job_location">Job Location:</label>
+          <input type="text" id="job_location" name="job_location" value="{{i[8]}}" placeholder="{{i[8]}}"><br><br>
+  
+          <button type="submit">Submit</button>
+      </form>
+      {% endfor %}
+  </body>
+</html>
